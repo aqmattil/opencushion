@@ -1,8 +1,10 @@
 # C Driver and Node Binding for HX711 Load Cell Amp
 
+This is a small fork of @dangrie/hx711 to use newer g++ version. The original code didn't compile with newer compilers causing some issues with other packages. This is very much untested.
+
 ## Prerequisities
 
-- ```g++-4.8``` node-gyp needs to compile with g++ v4.8 due to the version of v8 node uses since some versions. However raspian comes with v4.6 preinstalled. Install it via ```sudo apt-get install g++-4.8```
+- ```g++-4.9``` node-gyp needs to compile with g++ v4.9 due to the version of v8 node uses since some versions. However raspian comes with v4.6 preinstalled. Install it via ```sudo apt-get install g++-4.9```
 - ```WiringPi``` for the native GPIO handling this libary uses [WiringPi](http://wiringpi.com). Install it using the instructions on the Website.
 
 ## API
