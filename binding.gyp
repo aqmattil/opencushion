@@ -1,6 +1,6 @@
 {
 	"make_global_settings": [
-    		["CXX", "/usr/bin/g++-4.9"]
+    		["CXX", "/usr/bin/g++"]
   	],
 	"link_settings": {
 		"libraries": [
