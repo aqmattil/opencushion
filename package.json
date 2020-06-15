@@ -1,6 +1,6 @@
 {
   "name": "@aqmattil/hx711",
-  "version": "0.3.4.1",
+  "version": "0.3.5",
   "description": "C Driver and Node Binding for HX711 Load Cell Amp",
   "main": "hx711.js",
   "directories": {

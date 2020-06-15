@@ -68,7 +68,8 @@ int32_t HX711::read() {
 	}
 
 	if(data & 0x800000){
-		data |= (long) ~0xffffff;
+//		data |= (long) ~0xffffff;
+		data |= 0xFF000000UL;
 	}
 
 	return data;
