@@ -15,7 +15,7 @@ void readInstance() {
 }
 #endif
 
-HX711::HX711(uint8_t clockPin, uint8_t dataPin) :
+HX711::HX711(uint8_t clockPin, uint8_t dataPin,  uint8_t skipSetup) :
   mGainBits(1),
   mScale(1.0f),
   mOffset(0),
