@@ -41,7 +41,9 @@ void HX711Wrapper::InitModule(Local<Object> exports) {
 	NODE_SET_PROTOTYPE_METHOD(tpl, "getUnits", getUnits);
 	NODE_SET_PROTOTYPE_METHOD(tpl, "setGain", setGain);
 	NODE_SET_PROTOTYPE_METHOD(tpl, "getOffset", getOffset);
-        NODE_SET_PROTOTYPE_METHOD(tpl, "getScale", getScale);
+	NODE_SET_PROTOTYPE_METHOD(tpl, "getScale", getScale);
+	NODE_SET_PROTOTYPE_METHOD(tpl, "powerDown", powerDown);
+	NODE_SET_PROTOTYPE_METHOD(tpl, "powerUp", powerUp);
 
 	constructor.Reset(isolate, tpl->GetFunction());
 	exports->Set(String::NewFromUtf8(isolate, "HX711"), tpl->GetFunction());
@@ -125,6 +127,24 @@ void HX711Wrapper::getScale(const FunctionCallbackInfo<Value>& args) {
 
         HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
         float value = obj->mSensor->getScale();
+
+        args.GetReturnValue().Set(Number::New(isolate, value));
+}
+
+void HX711Wrapper::powerDown(const FunctionCallbackInfo<Value>& args) {
+        Isolate* isolate = args.GetIsolate();
+
+        HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
+        float value = obj->mSensor->powerDown();
+
+        args.GetReturnValue().Set(Number::New(isolate, value));
+}
+
+void HX711Wrapper::powerUp(const FunctionCallbackInfo<Value>& args) {
+        Isolate* isolate = args.GetIsolate();
+
+        HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
+        float value = obj->mSensor->powerUp();
 
         args.GetReturnValue().Set(Number::New(isolate, value));
 }
