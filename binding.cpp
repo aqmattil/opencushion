@@ -50,18 +50,18 @@ void HX711Wrapper::InitModule(Local<Object> exports) {
 }
 
 void HX711Wrapper::read(const FunctionCallbackInfo<Value>& args) {
-	Isolate* isolate = args.GetIsolate();
+				Isolate* isolate = args.GetIsolate();
 
-	HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
-	int32_t value = obj->mSensor->read();
+				HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
+				int32_t value = obj->mSensor->getLatestData();
 
-	args.GetReturnValue().Set(Number::New(isolate, value));
+				args.GetReturnValue().Set(Number::New(isolate, value));
 }
 
 void HX711Wrapper::setScale(const FunctionCallbackInfo<Value>& args) {
         Isolate* isolate = args.GetIsolate();
 
-	float scaleArg = args[0]->IsUndefined() ? 1.0f : args[0]->NumberValue();
+				float scaleArg = args[0]->IsUndefined() ? 1.0f : args[0]->NumberValue();
 
         HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
         obj->mSensor->setScale(scaleArg);
@@ -135,18 +135,18 @@ void HX711Wrapper::powerDown(const FunctionCallbackInfo<Value>& args) {
         Isolate* isolate = args.GetIsolate();
 
         HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
-        float value = obj->mSensor->powerDown();
+        obj->mSensor->powerDown();
 
-        args.GetReturnValue().Set(Number::New(isolate, value));
+        args.GetReturnValue().Set(Null(isolate));
 }
 
 void HX711Wrapper::powerUp(const FunctionCallbackInfo<Value>& args) {
         Isolate* isolate = args.GetIsolate();
 
         HX711Wrapper* obj = ObjectWrap::Unwrap<HX711Wrapper>(args.Holder());
-        float value = obj->mSensor->powerUp();
+        obj->mSensor->powerUp();
 
-        args.GetReturnValue().Set(Number::New(isolate, value));
+        args.GetReturnValue().Set(Null(isolate));
 }
 
 void HX711Wrapper::New(const FunctionCallbackInfo<Value>& args) {

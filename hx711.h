@@ -19,7 +19,8 @@ private:
 
 public:
   bool mDataReady;
-  HX711(uint8_t clockPin, uint8_t dataPin);
+  HX711(uint8_t clockPin, uint8_t dataPin, uint8_t skipSetup);
+	void initialize(uint8_t skipSetup);
   void setGain(uint8_t gain);
   void read();
   int32_t readAverage();
